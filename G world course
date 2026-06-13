@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G WORLD – Make Money Online</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F5C518;
+    --gold2: #FFD700;
+    --dark: #0a0a0a;
+    --dark2: #111111;
+    --dark3: #1a1a1a;
+    --card: #161616;
+    --text: #f0f0f0;
+    --muted: #888;
+    --green: #25D366;
+    --wave: #009CDE;
+    --afri: #E31837;
+    --eco: #2E7D32;
+    --qmoney: #FF6600;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,197,24,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    background: rgba(245,197,24,0.1);
+    border: 1px solid rgba(245,197,24,0.3);
+    color: var(--gold);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-weight: 600;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 18vw, 12rem);
+    line-height: 0.9;
+    color: var(--gold);
+    letter-spacing: 4px;
+    animation: fadeUp 0.7s ease 0.1s both;
+    text-shadow: 0 0 80px rgba(245,197,24,0.25);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.6;
+    margin: 20px auto 0;
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+
+  .hero-sub span { color: var(--gold); font-weight: 600; }
+
+  .price-banner {
+    margin: 36px auto 0;
+    background: linear-gradient(135deg, var(--gold), #e6a800);
+    color: #000;
+    padding: 16px 40px;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    animation: fadeUp 0.7s ease 0.3s both;
+    box-shadow: 0 8px 40px rgba(245,197,24,0.3);
+  }
+
+  .price-banner small {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  .scroll-hint {
+    margin-top: 50px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  /* SECTION STYLES */
+  section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1;
+    margin-bottom: 40px;
+    color: var(--text);
+  }
+
+  /* COURSE CATEGORIES */
+  .courses-wrap { width: 100%; }
+
+  .cat-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    border-left: 4px solid var(--gold);
+    padding-left: 14px;
+    margin: 40px 0 16px;
+  }
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  .course-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .course-card:hover {
+    border-color: var(--gold);
+    background: rgba(245,197,24,0.06);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245,197,24,0.12);
+  }
+
+  .course-card.selected {
+    border-color: var(--gold);
+    background: rgba(245,197,24,0.1);
+    box-shadow: 0 0 0 2px rgba(245,197,24,0.3);
+  }
+
+  .course-card.selected::after {
+    content: '✓';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--gold);
+    color: #000;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .course-num {
+    min-width: 30px; height: 30px;
+    background: rgba(245,197,24,0.1);
+    border: 1px solid rgba(245,197,24,0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .course-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text);
+    padding-right: 28px;
+  }
+
+  /* PAYMENT SECTION */
+  .payment-section {
+    background: var(--dark2);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 80px 20px;
+  }
+
+  .payment-inner { max-width: 1100px; margin: 0 auto; }
+
+  .payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .pay-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .pay-card:hover { transform: translateY(-3px); }
+
+  .pay-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 1.6rem;
+  }
+
+  .pay-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .pay-number {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .pay-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* REGISTRATION FORM */
+  .form-section { max-width: 680px; margin: 0 auto; padding: 80px 20px; }
+
+  .form-box {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 40px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  label {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    transition: border 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(245,197,24,0.1);
+  }
+
+  select option { background: #1a1a1a; }
+
+  textarea { resize: vertical; min-height: 90px; }
+
+  .selected-course-display {
+    background: rgba(245,197,24,0.08);
+    border: 1px solid rgba(245,197,24,0.25);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-height: 48px;
+  }
+
+  .amount-display {
+    background: var(--dark3);
+    border: 1px solid rgba(245,197,24,0.3);
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), #e6a800);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    padding: 18px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 8px 30px rgba(245,197,24,0.25);
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(245,197,24,0.4);
+  }
+
+  .submit-btn:active { transform: scale(0.98); }
+
+  .wa-icon { font-size: 1.3rem; }
+
+  .form-note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  /* STICKY CTA */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(135deg, var(--gold), #e6a800);
+    color: #000;
+    text-align: center;
+    padding: 14px 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 -4px 30px rgba(245,197,24,0.3);
+    transition: all 0.2s;
+  }
+
+  .sticky-cta:hover { background: #FFD700; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 20px 80px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  footer strong { color: var(--gold); }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,197,24,0.3), transparent);
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .form-box { padding: 24px 18px; }
+    .course-grid { grid-template-columns: 1fr; }
+  }
+
+  /* NO-SELECT HIGHLIGHT */
+  .no-course-warning {
+    color: #ff6b6b;
+    font-size: 0.8rem;
+    margin-top: 6px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🌍 Gambia's #1 Online Money Course</div>
+  <h1>G WORLD</h1>
+  <p class="hero-sub">
+    Learn how to <span>make real money online</span> from Gambia.
+    Choose your path, pay once, and start immediately.
+  </p>
+  <div class="price-banner">
+    Only D1,000 — One-Time Payment
+    <small>30 courses to choose from · Start today</small>
+  </div>
+  <div class="scroll-hint">↓ &nbsp; scroll to choose your course</div>
+</div>
+
+<!-- COURSES -->
+<section>
+  <div class="section-label">Step 1</div>
+  <div class="section-title">Choose Your Course</div>
+  <p style="color:var(--muted);margin-bottom:30px;font-size:0.95rem;">Click on any course below to select it. Then scroll down to register and pay.</p>
+
+  <div class="courses-wrap">
+
+    <div class="cat-title">💼 Freelance Services</div>
+    <div class="course-grid">
+      <div class="course-card" onclick="selectCourse(this, 'Social Media Management for Businesses')">
+        <div class="course-num">1</div>
+        <div class="course-name">Social Media Management for Businesses</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Facebook Ads Management')">
+        <div class="course-num">2</div>
+        <div class="course-name">Facebook Ads Management</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Instagram Growth Services')">
+        <div class="course-num">3</div>
+        <div class="course-name">Instagram Growth Services</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'TikTok Marketing Services')">
+        <div class="course-num">4</div>
+        <div class="course-name">TikTok Marketing Services</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Video Editing for Content Creators')">
+        <div class="course-num">5</div>
+        <div class="course-name">Video Editing for Content Creators</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Graphic Design Services')">
+        <div class="course-num">6</div>
+        <div class="course-name">Graphic Design Services</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Logo Design Business')">
+        <div class="course-num">7</div>
+        <div class="course-name">Logo Design Business</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Website Design and Setup')">
+        <div class="course-num">8</div>
+        <div class="course-name">Website Design and Setup</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'YouTube Channel Management')">
+        <div class="course-num">9</div>
+        <div class="course-name">YouTube Channel Management</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Content Creation Agency')">
+        <div class="course-num">10</div>
+        <div class="course-name">Content Creation Agency</div>
+      </div>
+    </div>
+
+    <div class="cat-title">📦 Digital Products</div>
+    <div class="course-grid">
+      <div class="course-card" onclick="selectCourse(this, 'Social Media Marketing Course')">
+        <div class="course-num">11</div>
+        <div class="course-name">Social Media Marketing Course</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Facebook Ads Guide for Gambian Businesses')">
+        <div class="course-num">12</div>
+        <div class="course-name">Facebook Ads Guide for Gambian Businesses</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Canva Template Packs')">
+        <div class="course-num">13</div>
+        <div class="course-name">Canva Template Packs</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Instagram Reel Templates')">
+        <div class="course-num">14</div>
+        <div class="course-name">Instagram Reel Templates</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'E-books on Business and Marketing')">
+        <div class="course-num">15</div>
+        <div class="course-name">E-books on Business and Marketing</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'AI Prompts for Marketers')">
+        <div class="course-num">16</div>
+        <div class="course-name">AI Prompts for Marketers</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Video Editing Presets')">
+        <div class="course-num">17</div>
+        <div class="course-name">Video Editing Presets</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Business Proposal Templates')">
+        <div class="course-num">18</div>
+        <div class="course-name">Business Proposal Templates</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'CV and Resume Templates')">
+        <div class="course-num">19</div>
+        <div class="course-name">CV and Resume Templates</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Online Coaching Programs')">
+        <div class="course-num">20</div>
+        <div class="course-name">Online Coaching Programs</div>
+      </div>
+    </div>
+
+    <div class="cat-title">💰 Affiliate & Commission Income</div>
+    <div class="course-grid">
+      <div class="course-card" onclick="selectCourse(this, 'Affiliate Marketing')">
+        <div class="course-num">21</div>
+        <div class="course-name">Affiliate Marketing</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Promote Crypto Wallets & Earn Referral Commissions')">
+        <div class="course-num">22</div>
+        <div class="course-name">Promote Crypto Wallets & Earn Referral Commissions</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Promote Fintech Apps & Earn Sign-up Bonuses')">
+        <div class="course-num">23</div>
+        <div class="course-name">Promote Fintech Apps & Earn Sign-up Bonuses</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'YouTube Monetization')">
+        <div class="course-num">24</div>
+        <div class="course-name">YouTube Monetization</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'TikTok Creator Rewards')">
+        <div class="course-num">25</div>
+        <div class="course-name">TikTok Creator Rewards</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Sell Hosting & Domain Referrals')">
+        <div class="course-num">26</div>
+        <div class="course-name">Sell Hosting & Domain Referrals</div>
+      </div>
+    </div>
+
+    <div class="cat-title">🏢 Agency & Business Models</div>
+    <div class="course-grid">
+      <div class="course-card" onclick="selectCourse(this, 'Lead Generation Agency for Local Businesses')">
+        <div class="course-num">27</div>
+        <div class="course-name">Lead Generation Agency for Local Businesses</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Real Estate Marketing Agency')">
+        <div class="course-num">28</div>
+        <div class="course-name">Real Estate Marketing Agency</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Online Advertising Agency for Schools, Shops & Restaurants')">
+        <div class="course-num">29</div>
+        <div class="course-name">Online Advertising Agency for Schools, Shops & Restaurants</div>
+      </div>
+      <div class="course-card" onclick="selectCourse(this, 'Personal Branding Agency for Entrepreneurs')">
+        <div class="course-num">30</div>
+        <div class="course-name">Personal Branding Agency for Entrepreneurs</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAYMENT METHODS -->
+<div class="payment-section">
+  <div class="payment-inner">
+    <div class="section-label">Step 2</div>
+    <div class="section-title">Pay D1,000 Via Any Method</div>
+    <p style="color:var(--muted);font-size:0.92rem;">Send D1,000 to any of these numbers. Screenshot your payment — you'll need it.</p>
+
+    <div class="payment-methods">
+
+      <div class="pay-card" style="border-color:rgba(0,156,222,0.3)">
+        <div class="pay-icon" style="background:rgba(0,156,222,0.15);color:#009CDE;">🌊</div>
+        <div class="pay-name" style="color:#009CDE;">Wave</div>
+        <div class="pay-number" style="color:#009CDE;">+220 5169263</div>
+        <div class="pay-label">Send to this number on Wave</div>
+      </div>
+
+      <div class="pay-card" style="border-color:rgba(227,24,55,0.3)">
+        <div class="pay-icon" style="background:rgba(227,24,55,0.15);color:#E31837;">📱</div>
+        <div class="pay-name" style="color:#E31837;">Afrimoney</div>
+        <div class="pay-number" style="color:#E31837;">+220 5169263</div>
+        <div class="pay-label">Send to this number on Afrimoney</div>
+      </div>
+
+      <div class="pay-card" style="border-color:rgba(255,102,0,0.3)">
+        <div class="pay-icon" style="background:rgba(255,102,0,0.15);color:#FF6600;">💳</div>
+        <div class="pay-name" style="color:#FF6600;">QMoney</div>
+        <div class="pay-number" style="color:#FF6600;">+220 5169263</div>
+        <div class="pay-label">Send to this number on QMoney</div>
+      </div>
+
+      <div class="pay-card" style="border-color:rgba(46,125,50,0.3)">
+        <div class="pay-icon" style="background:rgba(46,125,50,0.15);color:#4CAF50;">🏦</div>
+        <div class="pay-name" style="color:#4CAF50;">Eco Bank</div>
+        <div class="pay-number" style="color:#4CAF50;">6261016557</div>
+        <div class="pay-label">Account Number · Transfer D1,000</div>
+      </div>
+
+    </div>
+
+    <p style="margin-top:24px;font-size:0.82rem;color:var(--muted);text-align:center;">
+      ⚠️ After payment, take a screenshot of your receipt. You will need it in the next step.
+    </p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- REGISTRATION FORM -->
+<div class="form-section">
+  <div class="section-label" style="text-align:center;">Step 3</div>
+  <div class="section-title" style="text-align:center;font-size:clamp(2rem,5vw,3rem);">Fill Your Registration</div>
+  <p style="color:var(--muted);text-align:center;margin-bottom:30px;font-size:0.92rem;">Complete this form and you'll be sent straight to WhatsApp with everything filled in.</p>
+
+  <div class="form-box">
+
+    <div class="form-group">
+      <label>Your Selected Course</label>
+      <div class="selected-course-display" id="selectedCourseDisplay">
+        — Click a course above to select it —
+      </div>
+      <div class="no-course-warning" id="noCourseWarning">⚠️ Please select a course above first.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="fullName" placeholder="Enter your full name" />
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number (WhatsApp)</label>
+      <input type="tel" id="phone" placeholder="+220 XXXXXXX" />
+    </div>
+
+    <div class="form-group">
+      <label>Your Location / Town</label>
+      <input type="text" id="location" placeholder="e.g. Banjul, Serrekunda, Brikama..." />
+    </div>
+
+    <div class="form-group">
+      <label>Payment Method Used</label>
+      <select id="payMethod">
+        <option value="">— Select payment method —</option>
+        <option value="Wave">Wave</option>
+        <option value="Afrimoney">Afrimoney</option>
+        <option value="QMoney">QMoney</option>
+        <option value="Eco Bank">Eco Bank</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Amount Paid</label>
+      <div class="amount-display">D 1,000</div>
+    </div>
+
+    <div class="form-group">
+      <label>Payment Reference / Screenshot Description</label>
+      <textarea id="payRef" placeholder="e.g. 'Sent via Wave at 3:45pm, reference TXN123...' or describe your receipt"></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="sendToWhatsApp()">
+      <span class="wa-icon">💬</span>
+      SEND TO WHATSAPP & REGISTER NOW
+    </button>
+
+    <p class="form-note">
+      You'll be taken to WhatsApp with your full registration details already filled in. <br>
+      Send the message and attach your payment screenshot to complete enrollment.
+    </p>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>G WORLD</strong> · Making Gambians Money Online 🇬🇲<br><br>
+  Contact: <strong>+220 5169263</strong> · WhatsApp only<br><br>
+  <span style="font-size:0.7rem;">© 2025 G World. All rights reserved.</span>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" onclick="document.querySelector('.form-section').scrollIntoView({behavior:'smooth'})">
+  📲 &nbsp; ENROLL NOW FOR D1,000 — CLICK HERE
+</div>
+
+<script>
+  let selectedCourse = '';
+
+  function selectCourse(el, name) {
+    // Deselect all
+    document.querySelectorAll('.course-card').forEach(c => c.classList.remove('selected'));
+    // Select clicked
+    el.classList.add('selected');
+    selectedCourse = name;
+    // Update display
+    document.getElementById('selectedCourseDisplay').textContent = '✅ ' + name;
+    document.getElementById('noCourseWarning').style.display = 'none';
+    // Scroll to form smoothly after short delay
+    setTimeout(() => {
+      document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 400);
+  }
+
+  function sendToWhatsApp() {
+    const name = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const location = document.getElementById('location').value.trim();
+    const payMethod = document.getElementById('payMethod').value;
+    const payRef = document.getElementById('payRef').value.trim();
+
+    if (!selectedCourse) {
+      document.getElementById('noCourseWarning').style.display = 'block';
+      document.querySelector('.courses-wrap').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if (!name) { alert('Please enter your full name.'); return; }
+    if (!phone) { alert('Please enter your phone number.'); return; }
+    if (!location) { alert('Please enter your location.'); return; }
+    if (!payMethod) { alert('Please select your payment method.'); return; }
+
+    const msg =
+`🌍 *G WORLD — COURSE REGISTRATION*
+
+📚 *Course Selected:* ${selectedCourse}
+
+👤 *Full Name:* ${name}
+📞 *Phone (WhatsApp):* ${phone}
+📍 *Location:* ${location}
+
+💳 *Payment Method:* ${payMethod}
+💰 *Amount Paid:* D1,000
+🧾 *Payment Reference:* ${payRef || 'See screenshot attached'}
+
+✅ I have made my payment and I am ready to start!`;
+
+    const encoded = encodeURIComponent(msg);
+    const waNumber = '2205169263';
+    const url = `https://wa.me/${waNumber}?text=${encoded}`;
+    window.open(url, '_blank');
+  }
+</script>
+</body>
+</html>
